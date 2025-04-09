@@ -1,0 +1,15 @@
+
+<h1>DNS Security</h1>
+<hr/>
+<p>Many companies have already recognized DNS's vulnerability and try to close this gap with dedicated DNS servers, regular scans, and vulnerability assessment software. However, beyond that fact, more and more companies recognize the value of the DNS as an active <code>line of defense</code>, embedded in an in-depth and comprehensive security concept.</p>
+<p>This makes sense because the DNS is part of every network connection. The DNS is uniquely positioned in the network to act as a central control point to decide whether a benign or malicious request is received.</p>
+<p><code>DNS Threat Intelligence</code> can be integrated with other open-source and other threat intelligence feeds. Analytics systems such as <code>EDR</code> (<code>Endpoint Detection and Response</code>) and <code>SIEM</code> (<code>Security Information and Event Management</code>) can provide a holistic and situation-based picture of the security situation. DNS Security Services support the coordination of incident response by sharing <code>IOC</code>s (<code>Indicators of Compromise</code>) and <code>IOA</code>s (<code>Indicators of Attacks</code>) with other security technologies such as firewalls, network proxies, endpoint security, Network Access Control (NACs), and vulnerability scanners, providing them with information.</p>
+<hr/>
+<h2>DNSSEC</h2>
+<p>Another feed used for the security of DNS servers is <code>Domain Name System Security Extensions</code> (<code>DNSSEC</code>), designed to ensure the authenticity and integrity of data transmitted through the Domain Name System by securing resource records with digital certificates. <code>DNSSEC</code> ensures that the DNS data has not been manipulated and does not originate from any other source. <code>Private keys</code> are used to sign the <code>Resource Records</code> digitally. <code>Resource Records</code> can be signed several times with different private keys, for example, to replace keys that expire in time.</p>
+<hr/>
+<h4>Private Key</h4>
+<p>The DNS server that manages a zone to be secured signs its sent resource records using its only known <code>private key</code>. Each zone has its zone keys, each consisting of a <code>private</code> and a <code>public key</code>. <code>DNSSEC</code> specifies a new resource record type with the <code>RRSIG</code>. It contains the signature of the respective DNS record, and these used keys have a specific validity period and are provided with a <code>start</code> and <code>end date</code>.</p>
+<hr/>
+<h4>Public Key</h4>
+<p>The public key can be used to verify the signature of the recipients of the data. For the <code>DNSSEC</code> security mechanisms, it must be supported by the provider of the DNS information and the requesting client system. The requesting clients verify the signatures using the generally known public key of the DNS zone. If a check is successful, manipulating the response is impossible, and the information comes from the requested source.</p>
